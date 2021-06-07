@@ -48,6 +48,13 @@ function getRandomPhoto (max, photoss) {
 }
 
 
+let numb = [1, 2, 3, 4, 5, 6, 7, 8]
+
+function avatarNumber (max, numbers) {
+  let randomtNumb = getRandomIntInclusive(1, 8);
+  let avat = "img/avatars/user0" + randomtNumb +".jpg" ;
+  return avat;
+ }
 
 
 let rent = new Array(10)
@@ -56,7 +63,7 @@ console.log(rent)
 
 let house= rent.map(el =>([{
   author: {
-    avatar: 'img/avatars/user{{xx}}.png'
+    avatar: avatarNumber(8, numb)
   },
   offer: {
     title: 'Живите комфортно',

@@ -43,7 +43,7 @@ return featNumber;
 let photoObj = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg.']
 
 function getRandomPhoto (max, photoss) {
-  let randomPhoto = getRandomInt( 3);
+  let randomPhoto = getRandomIntInclusive(1, 8);
   let photosCount =photoObj[randomPhoto];
   return photosCount;
 }
