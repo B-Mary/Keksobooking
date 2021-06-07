@@ -1,4 +1,5 @@
 'use strict';
+//Не работает нужны строки(для type, photos, checkin, checkout) и по одному значениюююю
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -47,32 +48,3 @@ function getRandomPhoto (max, photoss) {
   return photosCount;
 }
 
-
-
-
-let rent = new Array(10)
-rent.fill()
-console.log(rent)
-
-let house= rent.map(el =>([{
-  author: {
-    avatar: 'img/avatars/user{{xx}}.png'
-  },
-  offer: {
-    title: 'Живите комфортно',
-    address: '{{location.x}}, {{location.y}}',
-    price: getRandomIntInclusive(5000, 30000) ,
-    type: getRandomType(4, typObj) ,
-    rooms: getRandomIntInclusive(1, 10) ,
-    quests: getRandomIntInclusive(1, 8) ,
-    checkin: getRandomCheck(3,check ),
-    checkout: getRandomCheck(3,check ),
-    features:getArray(6, featObj) ,
-    description: 'Все красиво и прелестно, и удобно, и чудесно.',
-    photos: getRandomPhoto(3, photoObj)
-  },
-  location:{
-    x: getRandomArbitrary(35.65000, 35.70000),
-    y:getRandomArbitrary(139.70000, 139.80000) ,
-  }
-}]))
