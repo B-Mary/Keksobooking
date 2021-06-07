@@ -67,7 +67,10 @@ let house= rent.map(el =>([{
   },
   offer: {
     title: 'Живите комфортно',
-    address: '{{location.x}}, {{location.y}}',
+    address:{
+      x: getRandomArbitrary(35.65000, 35.70000),
+      y:getRandomArbitrary(139.70000, 139.80000)
+    } ,
     price: getRandomIntInclusive(5000, 30000) ,
     type: getRandomType(4, typObj) ,
     rooms: getRandomIntInclusive(1, 10) ,
