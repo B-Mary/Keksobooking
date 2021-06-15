@@ -73,7 +73,7 @@ function cloneCard(offerDate){
 
  let popPhotos = clonedCard.querySelector(".popup__photos");
   let newPhotos = offerDate['offer'].photos.map(photo => {
-    return`<img src='${photo}'  >`
+    return`<img src='${photo}' width="45" height="40" >`
      }).join(''); 
  
   popPhotos.innerHTML  = newPhotos
