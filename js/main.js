@@ -67,20 +67,18 @@ function cloneCard(offerDate){
 
  let popDescription = clonedCard.querySelector(".popup__description");
  let newDescription = offerDate['offer'].description;
- 
- popDescription.innerText = newDescription;
+  popDescription.innerText = newDescription;
+
+
 
  let popPhotos = clonedCard.querySelector(".popup__photos");
-   let newPhotos = offerDate['offer'].photos.map(photo => {
-   let image =  document.createElement('img')
-  image.src = photo
-  return image
-    }); 
-    let joinPhotos = newPhotos.join(',')
-    console.log(joinPhotos)
-  popPhotos.innerText = joinPhotos
-  
-  debugger
+  let newPhotos = offerDate['offer'].photos.map(photo => {
+    return`<img src='${photo}'  >`
+     }).join(''); 
+ 
+  popPhotos.innerHTML  = newPhotos
+    
+ 
  
  let popAvatar = clonedCard.querySelector(".popup__avatar");
  let srcAvatar = offerDate['author'].avatar;
