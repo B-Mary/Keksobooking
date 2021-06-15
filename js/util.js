@@ -35,8 +35,8 @@ export function getRandomIntInclusive(min, max) {
 
 export function getRandomPhoto (max, photoss) {
   let randomPhoto = getRandomInt( 3);
-  let photosCount = photoss[randomPhoto];
-  return photosCount;
+  let picePhotoss = photoss.slice(randomPhoto)
+   return picePhotoss;
 }
 
 export function avatarNumber (max, numbers) {
