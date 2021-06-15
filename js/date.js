@@ -1,7 +1,7 @@
 'use strict';
 
 import {
-  getRandomInt, getRandomType, getArray, getRandomCheck, getRandomArbitrary, getRandomIntInclusive, getRandomPhoto, avatarNumber}from "util.js"
+  getRandomInt, getRandomType, getArray, getRandomCheck, getRandomArbitrary, getRandomIntInclusive, getRandomPhoto, avatarNumber}from "./util.js"
 
 
 let typObj = ['palace', 'flat', 'house', 'bungalow']
@@ -19,7 +19,7 @@ let numb = [1, 2, 3, 4, 5, 6, 7, 8]
 let rent = new Array(10)
 rent.fill()
 console.log(rent)
- export let house = rent.map(el =>([{
+ export let house = rent.map(el =>({
   author: {
     avatar: avatarNumber(8, numb)
   },
@@ -32,7 +32,7 @@ console.log(rent)
     price: getRandomIntInclusive(5000, 30000) ,
     type: getRandomType(4, typObj) ,
     rooms: getRandomIntInclusive(1, 10) ,
-    quests: getRandomIntInclusive(1, 8) ,
+    guests: getRandomIntInclusive(1, 8) ,
     checkin: getRandomCheck(3,check ),
     checkout: getRandomCheck(3,check ),
     features:getArray(6, featObj) ,
@@ -43,7 +43,7 @@ console.log(rent)
     x: getRandomArbitrary(35.65000, 35.70000),
     y:getRandomArbitrary(139.70000, 139.80000) ,
   }
-}]))
+}))
 
 
 

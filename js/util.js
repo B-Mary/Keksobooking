@@ -7,19 +7,19 @@ export function getRandomInt(max) {
 
 export function getRandomType(max, types) {
   let randomCount = getRandomInt( 4);
-  let typeeNumber = typObj[randomCount];
+  let typeeNumber = types[randomCount];
  return typeeNumber;
 }
 
 export function getArray (max, featuress) {
   let randomNumber = getRandomInt(6) ;
- let featNumber =featObj[randomNumber];
+ let featNumber = featuress[randomNumber];
 return featNumber;
 }
 
 export function getRandomCheck (max, checkins) {
   let randomTime = getRandomInt( 3);
-  let checkinTime = check[randomTime];
+  let checkinTime = checkins[randomTime];
   return checkinTime;
 }
 
@@ -35,7 +35,7 @@ export function getRandomIntInclusive(min, max) {
 
 export function getRandomPhoto (max, photoss) {
   let randomPhoto = getRandomInt( 3);
-  let photosCount =photoObj[randomPhoto];
+  let photosCount = photoss[randomPhoto];
   return photosCount;
 }
 
