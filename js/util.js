@@ -13,7 +13,7 @@ export function getRandomType(max, types) {
 
 export function getArray (max, featuress) {
   let randomNumber = getRandomInt(6) ;
- let featNumber = featuress[randomNumber];
+ let featNumber = featuress.slice(randomNumber);
 return featNumber;
 }
 
