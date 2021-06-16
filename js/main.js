@@ -61,9 +61,13 @@ function cloneCard(offerDate){
  let timeAll = 'Заезд в ' + timeIn + ', ' + 'выезд до ' + timeOut;
  popTime.innerText = timeAll
 
- let popFeatures = clonedCard.querySelector(".popup__features");
- let newFeatures = offerDate['offer'].features;
+
+ let popFeatures = cloneCard.querySelector(".map__features");
+ let newFeatures = document.createElement('img');
+ const src = './img/sprite-feature.svg';
+ newFeatures.src = src
  popFeatures.innerText = newFeatures;
+
 
  let popDescription = clonedCard.querySelector(".popup__description");
  let newDescription = offerDate['offer'].description;
