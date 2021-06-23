@@ -1,11 +1,9 @@
 'use strict';
 
 
-// import {house} from "./date.js" 
- 
-// let first = house[0];
-// console.log(first);
-
-// console.log(house);
-
 import {cloneCard} from "./card.js"
+
+import {homePrice, inTime, outTime} from "./form.js"
+
+
+typeHome.addEventListener('change', homePrice )

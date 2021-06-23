@@ -48,7 +48,6 @@ export function cloneCard(offerDate){
       break;
   }
 
-
  let popGuests = clonedCard.querySelector(".popup__text--capacity");
  let newGuests = offerDate['offer'].guests;
  let newRooms = offerDate['offer'].rooms;
