@@ -95,7 +95,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
-          <select id="type" name="type" onchange="homePrice()">
+          <select id="type" name="type">
             <option value="bungalow">Бунгало</option>
             <option value="flat" selected>Квартира</option>
             <option value="house">Дом</option>
@@ -104,7 +104,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000" onchange="homePrice()" >
+          <input id="price" name="price" type="number" placeholder="5000"  >
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--time">
           <label class="ad-form__label" for="timein">Время заезда и выезда</label>
@@ -113,7 +113,7 @@
             <option value="13:00">После 13</option>
             <option value="14:00">После 14</option>
           </select>
-          <select id="timeout" name="timeout" title="Time to go out" onchange="outTime()">
+          <select id="timeout" name="timeout" title="Time to go out" >
             <option value="12:00" selected>Выезд до 12</option>
             <option value="13:00">Выезд до 13</option>
             <option value="14:00">Выезд до 14</option>
