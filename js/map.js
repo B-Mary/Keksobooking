@@ -1,67 +1,79 @@
 
-let mapBlock = document.getElementById("map-canvas");
+const mapBlock = document.getElementById("map-canvas");
+const formAdress = document.getElementById("address")
 
-mapBlock.addEventListener('click', mapFun );
+mapBlock.addEventListener("click", mapFun );
 
 export function mapFun (){
-  let mapOptions = {
+  const mapOptions = {
     center: [35.6894, 139.692],
     zoom: 10
   }
 
-  let map = new L.map('map-canvas', mapOptions);
+  const map = new L.map("map-canvas", mapOptions);
 
-  let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+  const layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
          
  map.addLayer(layer);
   
- let markerMain = {
-  iconUrl: '../img/main-pin.svg',
-  iconSize: [40, 40]
+ const markerMain = {
+  iconUrl: "../img/main-pin.svg",
+  iconSize: [40, 40],
+ 
   }
-  let customIcon = L.icon(markerMain);
+  const customIcon = L.icon(markerMain);
 
-  let markerOptions = {
+  const markerOptions = {
     title: "MyLocation",
+    // position:latLng, 
+    // map:map,  и из-за этого тоже, почему??? не туда вставляю?
     clickable: true,
     draggable: true,
     icon: customIcon
   }
 
-  let markerM = L.marker([35.6894, 139.692], markerOptions);
+  const markerM = L.marker([35.6894, 139.692], markerOptions);
   markerM.addTo(map)
 
-   let markerNormal ={
-    iconUrl: '../img/pin.svg',
+  const markerNormal ={
+    iconUrl: "../img/pin.svg",
    iconSize: [40, 40]
   }
-  let customIconNormal = L.icon(markerNormal);
-  let markerOptionsN ={
+
+  const customIconNormal = L.icon(markerNormal);
+
+  const markerOptionsN ={
     title: "My another Location",
     clickable: true,
-    draggable: true,
+    draggable: false,
     icon: customIconNormal
   }
 
-  let markerN = L.marker([35.6894, 139.679], markerOptionsN);
+  const markerN = L.marker([35.6894, 139.679], markerOptionsN);
   markerN.addTo(map)
 
+  formAdress.setAttribute("readonly", "readonly")
+// из-за кода ниже не отображаються маркеры
+  // markerOptions.addEventListener("dragend", addressMarker)
+
+  // function addressMarker(e){
+  //   console.log(e.latLng);
+  // }
+//   
 }
 
 
+let notice = document.querySelector(".notice")
+let footer = document.querySelector(".footer")
 
+notice.style.display = "none";
+footer.style.display = "none";
 
-let notice = document.querySelector('.notice')
-let footer = document.querySelector('.footer')
-
-notice.style.display = 'none';
-footer.style.display = 'none';
-
-mapBlock.addEventListener('click',displeyBlock );
+mapBlock.addEventListener("click",displeyBlock );
 
 
 export function displeyBlock(){
-  notice.style.display = '';
-  footer.style.display = '';
+  notice.style.display = "";
+  footer.style.display = "";
+  
 }
-
