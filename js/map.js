@@ -1,8 +1,10 @@
+import {cloneCard} from "./card.js"
+import {house} from "./date.js"
 
 const mapBlock = document.getElementById("map-canvas");
 const formAdress = document.getElementById("address")
 
-mapBlock.addEventListener("click", mapFun );
+mapBlock.addEventListener("click", mapFun, {once: true});
 
 export function mapFun (){
   const mapOptions = {
@@ -25,8 +27,6 @@ export function mapFun (){
 
   const markerOptions = {
     title: "MyLocation",
-    // position:latLng, 
-    // map:map,  и из-за этого тоже, почему??? не туда вставляю?
     clickable: true,
     draggable: true,
     icon: customIcon
@@ -34,6 +34,13 @@ export function mapFun (){
 
   const markerM = L.marker([35.6894, 139.692], markerOptions);
   markerM.addTo(map)
+
+  formAdress.setAttribute("readonly", "readonly")
+ 
+  markerM.on("drag", newAddressMarker);
+  function newAddressMarker () {
+    formAdress.value = markerM.getLatLng().lat + " " + markerM.getLatLng().lng;
+  };
 
   const markerNormal ={
     iconUrl: "../img/pin.svg",
@@ -45,21 +52,31 @@ export function mapFun (){
   const markerOptionsN ={
     title: "My another Location",
     clickable: true,
-    draggable: false,
+    raggable: false,
     icon: customIconNormal
   }
 
-  const markerN = L.marker([35.6894, 139.679], markerOptionsN);
-  markerN.addTo(map)
+  // Это была попытка 
+  // let markerN = new Array(10)
+  // markerN.fill()
+  // let normalMarker = markerN.map(el =>{
+  //   let elMarker = L.marker([house.x, house.y ],markerOptionsN ).addTo(map)
+  // })
+  
+  function createPopup (offerObj){
+   let locX =  offerObj.offer.address.x 
+   let locY =  offerObj.offer.address.y
+   const markerN = L.marker([locX , locY], markerOptionsN);
+   markerN.addTo(map).bindPopup(cloneCard(offerObj));
 
-  formAdress.setAttribute("readonly", "readonly")
-// из-за кода ниже не отображаються маркеры
-  // markerOptions.addEventListener("dragend", addressMarker)
+  }
+ 
+  house.forEach(el => createPopup(el))
+    // нужно брать каждый елемент CloneCard(first) и присваить ему метку  с адрессом который генерируеться  в CloneCard popAddress 
 
-  // function addressMarker(e){
-  //   console.log(e.latLng);
-  // }
-//   
+    // потом каждой такой метке прицепить балун-инфу имено с данными метки(соответствовать должны координаты с popAddress)
+  
+
 }
 
 

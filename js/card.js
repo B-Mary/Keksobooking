@@ -16,6 +16,7 @@ export function cloneCard(offerDate){
   let popTitle = clonedCard.querySelector(".popup__title")
   
   let someText = offerDate['offer'].title;
+  debugger
   popTitle.innerText = someText;
   let mapCanvas = document.querySelector("#map-canvas")
   mapCanvas.prepend(clonedCard);
@@ -85,7 +86,8 @@ export function cloneCard(offerDate){
  popAvatar.innerText = srcAvatar;
  
  console.log(offerDate);
+ return clonedCard;
 }
 
-cloneCard(first);
+// cloneCard(first);
 
