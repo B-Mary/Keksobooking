@@ -56,12 +56,7 @@ export function mapFun (){
     icon: customIconNormal
   }
 
-  // Это была попытка 
-  // let markerN = new Array(10)
-  // markerN.fill()
-  // let normalMarker = markerN.map(el =>{
-  //   let elMarker = L.marker([house.x, house.y ],markerOptionsN ).addTo(map)
-  // })
+  
   
   function createPopup (offerObj){
    let locX =  offerObj.offer.address.x 
@@ -72,10 +67,6 @@ export function mapFun (){
   }
  
   house.forEach(el => createPopup(el))
-    // нужно брать каждый елемент CloneCard(first) и присваить ему метку  с адрессом который генерируеться  в CloneCard popAddress 
-
-    // потом каждой такой метке прицепить балун-инфу имено с данными метки(соответствовать должны координаты с popAddress)
-  
 
 }
 
