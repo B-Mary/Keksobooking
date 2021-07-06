@@ -11,7 +11,7 @@ typeHome.addEventListener("change", homePrice )
 export function homePrice(evt){
 
   const typeHome =evt.target.value;
-  formPrice.value='';
+  formPrice.value="";
   let count = null
   switch (typeHome){
    case "bungalow":

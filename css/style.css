@@ -55,7 +55,12 @@ fieldset {
 
   border: 0;
 }
-
+.valid{
+  border: 2px solid green  !important;
+}
+.invalid{
+  border: 2px solid red !important;
+}
 
 /* Карта с объявлениями
    ========================================================================== */
