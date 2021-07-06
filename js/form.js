@@ -1,12 +1,12 @@
 'use strict';
   
-let form = document.querySelector('.ad-form__element');
+let form = document.querySelector(".ad-form__element");
 let typeHome = document.getElementById("type");
 let formPrice = document.getElementById("price");
 
 
 
-typeHome.addEventListener('change', homePrice )
+typeHome.addEventListener("change", homePrice )
 
 export function homePrice(evt){
 
@@ -32,13 +32,13 @@ export function homePrice(evt){
 }
 
 
-let formEl = document.querySelector('.ad-form__element--time');
+let formEl = document.querySelector(".ad-form__element--time");
 
 let timeIn = document.getElementById("timein")
 let timeOut = document.getElementById("timeout")
 
-timeIn.addEventListener('change', inTime )
-timeOut.addEventListener('change', outTime )
+timeIn.addEventListener("change", inTime )
+timeOut.addEventListener("change", outTime )
 
 
 export function inTime(evt){
