@@ -8,13 +8,17 @@ import {homePrice, inTime, outTime} from "./form.js"
 import {mapFun, displeyBlock} from "./map.js"
 
 
+// import { allValid } from "./valid.js";
+  
 const title = document.getElementById("title");
 const submit = document.querySelector(".ad-form__submit");
 const form = document.querySelector(".ad-form");
-const price = document.getElementById("price");
-let type = document.getElementById("type");
+const priceHome = document.getElementById("price");
+const typeHome = document.getElementById("type");
+const roomNumber = document.getElementById("room_number");
+const numberSeats = document.getElementById("capacity");
 
-function allValid () {
+export function allValid () {
 
   title.addEventListener("keyup", function(){
     this.value = this.value.replace(/[^\D]/g, '');
@@ -39,30 +43,99 @@ function allValid () {
       price.value = price.value.replace(/[^\d]/g, '');
      });
 
-    price.addEventListener("change", typePrice) ;function typePrice (ev){
+    price.addEventListener("change", typePrice) ;function typePrice (){
+     
+       let home = typeHome.value;
       
-      type = ev.target.value;
-      price.value = "";
-      let count = "null";
-      debugger
-      switch (type){
+       let coc = priceHome.value  ;
+      switch (home){
         case "bungalow":
-          count = "0";
-          
+          if (coc < 0 || coc > 1000000  ) {
+            price.classList.add("invalid");
+          }  else {
+            price.classList.remove("invalid");
+            price.classList.add("valid");
+          }     
           break;
         case "flat":
-          count = "1000";
+          if (coc < 1000 || coc > 1000000 ) {
+            price.classList.add("invalid");
+          }  else {
+            price.classList.remove("invalid");
+            price.classList.add("valid");
+          }  
           break;
         case "house":
-          count ="5000";
+          if (coc< 5000 || coc > 1000000 ) {
+            price.classList.add("invalid");
+          }  else {
+            price.classList.remove("invalid");
+            price.classList.add("valid");
+          }  
           break;
         case "palace":
-          count= "10000";
+          if (coc < 10000 || coc > 1000000 ) {
+            price.classList.add("invalid");
+          }  else {
+            price.classList.remove("invalid");
+            price.classList.add("valid");
+          }  
           break; 
       }
-      price.setAttribute("value", count);
-      price.min = count;
+       priceHome.setAttribute("value", coc)
+       priceHome.min =coc;
     } ; 
+
+    roomNumber.addEventListener("change", rooms);
+    function rooms (){
+      let roomValue = roomNumber.value;
+      let count ;
+      debugger
+      // let guestValue1 = numberSeats.options[numberSeats.selectedIndex].value ,
+
+      // guestValue2 = numberSeats.options[numberSeats.selectedIndex].value ,
+
+      // guestValue3 = numberSeats.options[numberSeats.selectedIndex].value,
+
+      // guestValue0 = numberSeats.options[numberSeats.selectedIndex].value ;
+
+      switch(roomValue){
+        case "1":
+         
+         break;
+         case "2":
+         
+         break;
+         case "3":
+         
+         break;
+         case "4":
+         
+         break;
+      }
+      // numberSeats.value = count;
+
+      
+
+      // if (roomValue = 1){
+        
+      //   guest2.disabled;
+      //   guest3.setAttribute("disabled","disabled" );
+      //   guest0.setAttribute("disabled","disabled" );
+      // } else if (roomValue = 2){
+
+      //   guest3.setAttribute("disabled","disabled" );
+      //   guest0.setAttribute("disabled","disabled" );
+      // } else if (roomValue = 3){
+      //   guest0.setAttribute("disabled","disabled" );
+      // } else {
+      //   guest1.setAttribute("disabled","disabled" );
+      //   guest2.setAttribute("disabled","disabled" );
+      //   guest3.setAttribute("disabled","disabled" );
+      // }
+      
+      
+    }
     
     
      
@@ -73,4 +146,3 @@ function allValid () {
 }
 
 allValid();
-  

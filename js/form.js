@@ -8,11 +8,12 @@ let formPrice = document.getElementById("price");
 
 typeHome.addEventListener("change", homePrice )
 
-export function homePrice(evt){
+ export function homePrice(evt){
 
   const typeHome =evt.target.value;
   formPrice.value="";
   let count = null
+ 
   switch (typeHome){
    case "bungalow":
     count = "0";      
@@ -30,7 +31,6 @@ export function homePrice(evt){
   formPrice.setAttribute("placeholder", count)
   formPrice.min = count;
 }
-
 
 let formEl = document.querySelector(".ad-form__element--time");
 
