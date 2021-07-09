@@ -5,7 +5,7 @@ const form = document.querySelector(".ad-form");
 const priceHome = document.getElementById("price");
 const typeHome = document.getElementById("type");
 const roomNumber = document.getElementById("room_number");
-const numberSeats = document.getElementById("capacity");
+const numberSeats = document.getElementById("guests");
 
 export function allValid () {
 
@@ -75,41 +75,27 @@ export function allValid () {
        priceHome.min =coc;
     } ; 
 
-    roomNumber.addEventListener("change", rooms);
-    function rooms (){
-      let roomValue = roomNumber.value;
-      let seatsValue = numberSeats.value;
-      let count = null; 
-      switch(roomValue){
-        case "1":
-          if (count ==2){
-            seatsValue[2].setAttribute("disabled", "disabled");
-          } else if  (count ==3){
-            seatsValue[1].setAttribute("disabled", "disabled")
-          } 
-          break;
-        case "2":
-         
-           if (count ==3){
-            seatsValue[1].setAttribute("disabled", "disabled");
-          } else{
-
-          }
-          break;
-        case "3":
-
-          break;
-        case "100":
-          break;
-      }
-      seatsValue = count;
-    }
-    
-    
-     
+    roomNumber.addEventListener("change", function (evt){
       
-     
-    
+      let roomValue = evt.target.value;
+      
+      
+      if(roomValue == 1){
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[3].disabled = true;
+        numberSeats.options[1].disabled=true
+      } else if(roomValue == 2){
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[3].disabled = true;
+      } else if (roomValue == 3){
+        numberSeats.options[3].disabled = true;
+      } else if(roomValue == 100) {
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[1].disabled = true;
+        numberSeats.options[2].disabled = true;
+      }
+      
+     } );
 
 }
 
