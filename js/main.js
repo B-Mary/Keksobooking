@@ -16,7 +16,7 @@ const form = document.querySelector(".ad-form");
 const priceHome = document.getElementById("price");
 const typeHome = document.getElementById("type");
 const roomNumber = document.getElementById("room_number");
-const numberSeats = document.getElementById("capacity");
+const numberSeats = document.getElementById("guests");
 
 export function allValid () {
 
@@ -86,62 +86,29 @@ export function allValid () {
        priceHome.min =coc;
     } ; 
 
-    roomNumber.addEventListener("change", rooms);
-    function rooms (){
-      let roomValue = roomNumber.value;
-      let count ;
-      debugger
-      // let guestValue1 = numberSeats.options[numberSeats.selectedIndex].value ,
-
-      // guestValue2 = numberSeats.options[numberSeats.selectedIndex].value ,
-
-      // guestValue3 = numberSeats.options[numberSeats.selectedIndex].value,
-
-      // guestValue0 = numberSeats.options[numberSeats.selectedIndex].value ;
-
-      switch(roomValue){
-        case "1":
-         
-         break;
-         case "2":
-         
-         break;
-         case "3":
-         
-         break;
-         case "4":
-         
-         break;
+    roomNumber.addEventListener("change", function (evt){
+      
+      let roomValue = evt.target.value;
+      
+      
+      if(roomValue == 1){
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[3].disabled = true;
+        numberSeats.options[1].disabled=true
+      } else if(roomValue == 2){
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[3].disabled = true;
+      } else if (roomValue == 3){
+        numberSeats.options[3].disabled = true;
+      } else if(roomValue == 100) {
+        numberSeats.options[0].disabled = true;
+        numberSeats.options[1].disabled = true;
+        numberSeats.options[2].disabled = true;
       }
-      // numberSeats.value = count;
-
       
-
-      // if (roomValue = 1){
-        
-      //   guest2.disabled;
-      //   guest3.setAttribute("disabled","disabled" );
-      //   guest0.setAttribute("disabled","disabled" );
-      // } else if (roomValue = 2){
-
-      //   guest3.setAttribute("disabled","disabled" );
-      //   guest0.setAttribute("disabled","disabled" );
-      // } else if (roomValue = 3){
-      //   guest0.setAttribute("disabled","disabled" );
-      // } else {
-      //   guest1.setAttribute("disabled","disabled" );
-      //   guest2.setAttribute("disabled","disabled" );
-      //   guest3.setAttribute("disabled","disabled" );
-      // }
-      
-      
-    }
+     } );
     
-    
-     
-      
-     
-    
+       
 
 }
 
