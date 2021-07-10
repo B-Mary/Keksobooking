@@ -79,23 +79,33 @@ export function allValid () {
       
       let roomValue = evt.target.value;
       
-      
-      if(roomValue == 1){
-        numberSeats.options[0].disabled = true;
-        numberSeats.options[3].disabled = true;
-        numberSeats.options[1].disabled=true
-      } else if(roomValue == 2){
-        numberSeats.options[0].disabled = true;
-        numberSeats.options[3].disabled = true;
-      } else if (roomValue == 3){
-        numberSeats.options[3].disabled = true;
-      } else if(roomValue == 100) {
-        numberSeats.options[0].disabled = true;
-        numberSeats.options[1].disabled = true;
-        numberSeats.options[2].disabled = true;
+      switch(roomValue){
+        case "1":
+          numberSeats.options[0].disabled = true;
+          numberSeats.options[3].disabled = true;
+          numberSeats.options[1].disabled = true;
+          numberSeats.options[2].disabled = false;
+          break;
+        case "2":
+          numberSeats.options[0].disabled = true;
+          numberSeats.options[3].disabled = true;
+          numberSeats.options[1].disabled = false;
+          numberSeats.options[2].disabled = false;
+          break;
+        case "3":
+          numberSeats.options[3].disabled = true;
+          numberSeats.options[1].disabled = false;
+          numberSeats.options[2].disabled = false;
+          numberSeats.options[0].disabled = false;
+          break;
+        case "100":
+          numberSeats.options[0].disabled = true;
+          numberSeats.options[1].disabled = true;
+          numberSeats.options[2].disabled = true;
+          numberSeats.options[3].disabled = false;
+          break;
       }
-      
-     } );
+    })
 
 }
 
