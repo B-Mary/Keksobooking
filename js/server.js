@@ -1,79 +1,68 @@
 
+import {mapFun, displeyBlock} from "./map.js"
+
+
 const allForm = document.querySelector(".ad-form");
+const success = document.getElementById("success")
+const err = document.getElementById("error")
 
 
 
 function allFunction(){
+ debugger
 
-// Отправка формы на сервер 
-const sendForm = async (url, data)=>{
-//  получаем ответ от сервера 
-  const response  = await fetch(url, {
-    method: "POST",
-    body: data
-  })
-  // проверка условий 
-  if (response.status >= 200 && response.status < 300 ){ 
-    return await response.json()
-  } else { 
-    alert("Ошибка по адресу ${url}б статус ошибки ${response}"); 
-  }
- }
+ 
+ async function getDate(){
+   let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
+   {
+     method: 'GET',
+     credentials: 'same-origin',
+   })
+   let dataGet = await responseGet.json()
+   return dataGet;
+   }
+   const finalGetData = getDate().then(responce=> console.log(responce))
+   console.log(finalGetData)
+ 
+ // Oтправка данных
 
-//  Получение данных с сервера
- const getResponse = async (url)=>{
-  const responseGet = await fetch(url);
-   // проверка условий 
-  if (responseGet.status >= 200 && responseGet.status < 300 ){ 
-    return  responseGet.json()
-  } else { 
-    alert("Ошибка по адресу ${url} статус ошибки ${responseGet}"); 
-  }
-  
- }
- getResponse("https://22.javascript.pages.academy/keksobooking/data").then((data)=>console.log(data))
- .catch((err)=> alert(err))
-
- allForm.addEventListener("submit", e =>{
+ allForm.addEventListener("submit", sendData)
+ async function sendData(e){
    e.preventDefault();
-  //  должны назвать переменную и присвоить ей new FormData(allForm)
-  sendForm("https://22.javascript.pages.academy/keksobooking/data", /* наша переменная пункт выше*/).then(()=>{
-    allForm.reset() /*усли все отпр очищаем форму*/
-    alert("Форма очищенная")
-  })
-  .catch((err)=> alert(err))
- })
+   const responseSend = await fetch("https//:23.javascript.pages.academy/keksobooking", {
+     method: "POST",
+     body: JSON.stringify(formData)
+   }).then(function(response){
+     success.style.display = "";
+   })
+   .then(()=>{
+     allForm.reset()
+   })
+   .catch(function(error){
+     err.style.display = "";
+     success.style.display = none;
+     console.log(error)
+   })
+   
+   const formData  = new FormData(allForm);
+   
+  for(const name in e) {
+   formData.append(name, e[name]);
+  }
+ }
 
 }
 allFunction();
 
 
-// sendForm.addEventListener("submit", server)
 
-// async function server(e){
-//   e.preventDefault();
-//  let urlRes = await fetch("https://22.javascript.pages.academy/keksobooking/data", {
-//    method:"POST",
-//    body: formData
-//  })
-//  .then((res)=>{
-//    if(res.status >= 200 && res.status < 300){
-//        return res;
-//       }
-//       else {
-//         Promise.reject(res)
-//           }
-//   })
-//   .then(res => res.json())
-//   .then(data => console.log('+', data))
-//   .catch(error => alert(error.message))
-
-
-  // if(responce.ok){
-  //   let json = await response.json();
-
-  // }
-  // else { alert("Ошибка HTTP: " + response.status); }
-// }
-
-getResponce();
+.then(function(response){
+  success.style.display = "";
+})
+.then(()=>{
+  allForm.reset()
+})
+.catch(function(error){
+  err.style.display = "";
+  console.log(error)
+})
