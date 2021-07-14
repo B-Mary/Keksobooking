@@ -40,9 +40,8 @@ import {mapFun, displeyBlock} from "./map.js"
   allForm.addEventListener("submit", sendData)
   async function sendData(e, data){
     e.preventDefault();
-    debugger
-     const formData  = new FormData(this);
-     
+   
+     const formData  = new FormData(this); 
     
     const response = await fetch("https://23.javascript.pages.academy/keksobooking", {
       method: 'POST',
@@ -51,17 +50,27 @@ import {mapFun, displeyBlock} from "./map.js"
       return response.text()
      }).then(function(text){
        console.log(text)
+       allForm.reset();
+
+        let elem = document.createElement("div");
+        // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
+        elem.append(success.content.cloneNode(true));
+        document.body.append(elem);
+
       }).catch(function(error){
-       console.log(error)
+        let elem = document.createElement("div");
+        elem.append(err.content.cloneNode(true));  
+        document.body.append(elem);
+        console.log(error)
+        
      })
-    
     
   }
   
-  // // Кнопка очистки: очистка формы
-  // resetBtn.addEventListener("click", ()=>{
-  //   allForm.reset()
-  // })
+    // Кнопка очистки: очистка формы
+    resetBtn.addEventListener("click", ()=>{
+      allForm.reset()
+    })
  
  }
  allFunction();
