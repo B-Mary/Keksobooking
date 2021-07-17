@@ -10,20 +10,23 @@ import {mapFun, displeyBlock} from "./map.js"
 
  import { allValid } from "./valid.js";
 
-
-  
  const allForm = document.querySelector(".ad-form");
  const success = document.getElementById("success")
  const err = document.getElementById("error")
  const resetBtn = document.querySelector(".ad-form__reset")
  const errtBtn = document.querySelector(".error__button")
+
+
+ 
+ 
  
 
  function allFunction(){
   
-
+ 
   
   async function getDate(){
+   
     let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
     {
       method: 'GET',
@@ -32,38 +35,57 @@ import {mapFun, displeyBlock} from "./map.js"
     let dataGet = await responseGet.json()
     return dataGet;
     }
-    const finalGetData = getDate().then(responce=> console.log(responce))
-    console.log(finalGetData)
+    
+    getDate().then(function(resp){
+      console.log(resp);
+      
+      mapFun(resp)
+       })
   
   // Oтправка данных
  
   allForm.addEventListener("submit", sendData)
-  async function sendData(e, data){
+  
+ async function sendData(e){
     e.preventDefault();
-   
+   debugger
+  
      const formData  = new FormData(this); 
-    
-    const response = await fetch("https://23.javascript.pages.academy/keksobooking", {
+     
+     
+    let responce = await fetch("https://23.javascript.pages.academy/keksobooking", {
       method: 'POST',
-      body: formData
-    }).then(function(response){
-      return response.text()
-     }).then(function(text){
-       console.log(text)
-       allForm.reset();
+      body:JSON.stringify(formData)
+    }).then(function(resp){
+      return resp.text();
+    }).then(function(text){
+      console.log(text)
+    }).catch(function(error){
+      console.log(error)
+    })
+    
+    //  (function  status(response){
+      //   if(response >= 200 && response <= 300){
+      //     let elem = document.createElement("div");
+      //     elem.append(success.content.cloneNode(true));
+      //   document.body.append(elem);
+      //   } else {
+      //     let elem = document.createElement("div");
+      //     elem.append(err.content.cloneNode(true));  
+      //     document.body.append(elem);
+      //   }
+      //  })
 
-        let elem = document.createElement("div");
-        // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
-        elem.append(success.content.cloneNode(true));
-        document.body.append(elem);
+      // .then(function(text){
+      //  console.log(text)
+      //  allForm.reset();
 
-      }).catch(function(error){
-        let elem = document.createElement("div");
-        elem.append(err.content.cloneNode(true));  
-        document.body.append(elem);
-        console.log(error)
-        
-     })
+      //   let elem = document.createElement("div");
+      //   // Клонируем содержимое шаблона для того, чтобы переиспользовать его несколько раз
+      //   elem.append(success.content.cloneNode(true));
+      //   document.body.append(elem);
+
+      // })
     
   }
   

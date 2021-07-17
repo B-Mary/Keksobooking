@@ -22,8 +22,8 @@ export function cloneCard(offerDate){
   mapCanvas.prepend(clonedCard);
 
   let popAddress = clonedCard.querySelector(".popup__text--address");
-  let newAddressX = offerDate['offer'].address.x;
-  let newAddressY = offerDate['offer'].address.y;
+  let newAddressX = offerDate.location.lat;
+  let newAddressY = offerDate.location.lng;
   let newAddress = newAddressX + ' ' + newAddressY;
   popAddress.innerText = newAddress;
  

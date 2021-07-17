@@ -1,12 +1,11 @@
 import {cloneCard} from "./card.js"
-import {house} from "./date.js"
-
+import { allValid } from "./valid.js";
 const mapBlock = document.getElementById("map-canvas");
-const formAdress = document.getElementById("address")
-
+ const formAdress = document.getElementById("address")
 mapBlock.addEventListener("click", mapFun, {once: true});
 
-export function mapFun (){
+export function mapFun (all){
+ 
   const mapOptions = {
     center: [35.6894, 139.692],
     zoom: 10
@@ -59,14 +58,14 @@ export function mapFun (){
   
   
   function createPopup (offerObj){
-   let locX =  offerObj.offer.address.x 
-   let locY =  offerObj.offer.address.y
+   
+   let locX =  offerObj.location.lat
+   let locY =  offerObj.location.lng
    const markerN = L.marker([locX , locY], markerOptionsN);
    markerN.addTo(map).bindPopup(cloneCard(offerObj));
-
   }
  
-  house.forEach(el => createPopup(el))
+  all.forEach(el => createPopup(el))
 
 }
 
