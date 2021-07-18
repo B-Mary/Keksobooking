@@ -50,19 +50,19 @@ import {mapFun, displeyBlock} from "./map.js"
     e.preventDefault();
    debugger
   
-     const formData  = new FormData(this); 
+     const formData  = new FormData(allForm); 
+    //  обджект делает масив , а без этого оно вообще не хочет отображать, типа пустой обьект, вот: {}
+     const formDataObj = Object.fromEntries(formData);
      
      
     let responce = await fetch("https://23.javascript.pages.academy/keksobooking", {
       method: 'POST',
-      body:JSON.stringify(formData)
-    }).then(function(resp){
-      return resp.text();
-    }).then(function(text){
-      console.log(text)
-    }).catch(function(error){
-      console.log(error)
-    })
+      body:JSON.stringify(formDataObj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    let textFrom = await responce.text();
     
     //  (function  status(response){
       //   if(response >= 200 && response <= 300){
