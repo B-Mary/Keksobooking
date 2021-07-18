@@ -15,32 +15,36 @@ import {mapFun, displeyBlock} from "./map.js"
  const err = document.getElementById("error")
  const resetBtn = document.querySelector(".ad-form__reset")
  const errtBtn = document.querySelector(".error__button")
-
+ const mapBlock = document.getElementById("map-canvas");
 
  
  
  
 
  function allFunction(){
+
+  mapBlock.addEventListener("click", functGet, {once: true});
   
- 
-  
-  async function getDate(){
+  function functGet (){
+    async function getDate(){
    
-    let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
-    {
-      method: 'GET',
-      credentials: 'same-origin',
-    })
-    let dataGet = await responseGet.json()
-    return dataGet;
-    }
-    
-    getDate().then(function(resp){
-      console.log(resp);
+      let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
+      {
+        method: 'GET',
+        credentials: 'same-origin',
+      })
+      let dataGet = await responseGet.json()
+      return dataGet;
+      }
       
-      mapFun(resp)
-       })
+      getDate().then(function(resp){
+        console.log(resp);
+        
+        mapFun(resp)
+         })
+  }
+  
+  
   
   // Oтправка данных
  

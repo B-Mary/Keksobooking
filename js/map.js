@@ -1,8 +1,8 @@
 import {cloneCard} from "./card.js"
 import { allValid } from "./valid.js";
-const mapBlock = document.getElementById("map-canvas");
+
  const formAdress = document.getElementById("address")
-mapBlock.addEventListener("click", mapFun, {once: true});
+ const mapBlock = document.getElementById("map-canvas");
 
 export function mapFun (all){
  
