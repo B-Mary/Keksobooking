@@ -1,11 +1,11 @@
 'use strict';
 
-import {house} from "./date.js" 
+ import {house} from "./date.js" 
  
 let first = house[0];
-console.log(first);
+// console.log(first);
 
-console.log(house);
+// console.log(house);
 
 export function cloneCard(offerDate){ 
   const card = document.querySelector('#card')
@@ -18,8 +18,8 @@ export function cloneCard(offerDate){
   let someText = offerDate['offer'].title;
  
   popTitle.innerText = someText;
-  let mapCanvas = document.querySelector("#map-canvas")
-  mapCanvas.prepend(clonedCard);
+  // let mapCanvas = document.querySelector("#map-canvas")
+  // mapCanvas.prepend(clonedCard);
 
   let popAddress = clonedCard.querySelector(".popup__text--address");
   let newAddressX = offerDate.location.lat;

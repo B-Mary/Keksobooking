@@ -33,6 +33,7 @@ export function mapFun (all){
 
   const markerM = L.marker([35.6894, 139.692], markerOptions);
   markerM.addTo(map)
+  formAdress.value = [35.6894 + "  " + 139.692]
 
   formAdress.setAttribute("readonly", "readonly")
  
