@@ -1,8 +1,8 @@
 import {cloneCard} from "./card.js"
 import { allValid } from "./valid.js";
 
- const formAdress = document.getElementById("address")
- const mapBlock = document.getElementById("map-canvas");
+const formAdress = document.getElementById("address")
+const mapBlock = document.getElementById("map-canvas");
 
 export function mapFun (all){
  
@@ -30,17 +30,16 @@ export function mapFun (all){
     draggable: true,
     icon: customIcon
   }
-
   const markerM = L.marker([35.6894, 139.692], markerOptions);
-  markerM.addTo(map)
-  formAdress.value = [35.6894 + "  " + 139.692]
-
-  formAdress.setAttribute("readonly", "readonly")
+    markerM.addTo(map)
+    formAdress.value = [35.6894 + "  " + 139.692]
  
-  markerM.on("drag", newAddressMarker);
+  formAdress.setAttribute("readonly", "readonly")
+       
+   markerM.on("drag", newAddressMarker);
   function newAddressMarker () {
-    formAdress.value = markerM.getLatLng().lat + " " + markerM.getLatLng().lng;
-  };
+      formAdress.value = markerM.getLatLng().lat + " " + markerM.getLatLng().lng;
+   };
 
   const markerNormal ={
     iconUrl: "../img/pin.svg",

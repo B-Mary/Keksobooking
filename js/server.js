@@ -6,17 +6,20 @@
  const success = document.getElementById("success")
  const err = document.getElementById("error")
  const resetBtn = document.querySelector(".ad-form__reset")
- const errtBtn = document.querySelector(".error__button")
+ const errBtn = document.querySelector(".error__button")
  const mapBlock = document.getElementById("map-canvas");
+ const formAdress = document.getElementById("address")
 
- 
+ const main = document.querySelector(".mainm")
  
  
 
 export function allFunction(){
 
   mapBlock.addEventListener("click", functGet, {once: true});
+
   
+
   function functGet (){
     async function getDate(){
    
@@ -33,6 +36,7 @@ export function allFunction(){
         console.log(resp);
         
         mapFun(resp)
+        
          })
   }
   
@@ -50,19 +54,62 @@ export function allFunction(){
       method: 'POST',
       body:formData
     });
-    debugger
+    
      function  status(response){
-        if(response = "ok"){
-          
+        // if(response = "ok"){
+        //   let elem = document.createElement("div");
+        //   let clone = success.content.cloneNode(true)
+        //   elem.append(clone);  
+         
+        //   main.append(elem)
+
+        // allForm.reset();
+        //  window.addEventListener("click", templateClock) 
+        //  window.addEventListener("keydown", templateKey)
+        //  function templateClock (event) {
+        //     if (event.target.className === "successs"){
+        //       elem.style.display = "none"
+        //     }
+        //  }
+        //  function templateKey (ev){
+        //     debugger
+        //     if (ev.keyCode == 27){
+        //       elem.style.display = "none"
+        //     }
+        //  }
+        
+        // formAdress.value = [35.6894 + "  " + 139.692]
+        
+        // } 
+        // else  {
           let elem = document.createElement("div");
-          elem.append(success.content.cloneNode(true));
-        document.body.append(elem);
-        allForm.reset();
-        } else {
-          let elem = document.createElement("div");
-          elem.append(err.content.cloneNode(true));  
-          document.body.append(elem);
-        }
+          let clone = err.content.cloneNode(true)
+          elem.append(clone);  
+          main.append(elem)
+
+          window.addEventListener("click", templateClock) 
+          window.addEventListener("keydown", templateKey)
+          errBtn.addEventListener("click", templateBtn)
+
+          function templateClock (event) {
+             if (event.target.className === "error"){
+               elem.style.display = "none"
+             }
+          }
+          function templateKey (ev){
+            debugger
+            if (ev.keyCode == 27){
+              elem.style.display = "none"
+            }
+          }
+         
+          function templateBtn(e){
+            debugger
+            if (e.target.className === "error"){
+              elem.style.display = "none"
+            }
+          }
+         
        }
        status(responce)
 

@@ -926,7 +926,7 @@ fieldset {
  * Сообщения об успешном и неуспешном создании объявления
  */
 
-.success,
+.successs,
 .error {
   position: fixed;
   top: 0;
@@ -948,7 +948,7 @@ fieldset {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.success__message,
+.successs__message,
 .error__message {
   position: relative;
 
@@ -957,7 +957,7 @@ fieldset {
   font-weight: 700;
 }
 
-.success__message::before,
+.successs__message::before,
 .error__message::before {
   content: "";
   position: absolute;
