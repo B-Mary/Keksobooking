@@ -45,43 +45,52 @@ export function allFunction(){
   
  async function sendData(e){
     e.preventDefault();
-   
-  
+
      const formData  = new FormData(allForm); 
 
-     
     let responce = await fetch("https://23.javascript.pages.academy/keksobooking", {
       method: 'POST',
       body:formData
     });
     
      function  status(response){
-        // if(response = "ok"){
-        //   let elem = document.createElement("div");
-        //   let clone = success.content.cloneNode(true)
-        //   elem.append(clone);  
+        if(response = "ok"){
+          let elem = document.createElement("div");
+          let clone = success.content.cloneNode(true)
+          elem.append(clone);  
          
-        //   main.append(elem)
+          main.append(elem)
 
-        // allForm.reset();
-        //  window.addEventListener("click", templateClock) 
-        //  window.addEventListener("keydown", templateKey)
-        //  function templateClock (event) {
-        //     if (event.target.className === "successs"){
-        //       elem.style.display = "none"
-        //     }
-        //  }
-        //  function templateKey (ev){
-        //     debugger
-        //     if (ev.keyCode == 27){
-        //       elem.style.display = "none"
-        //     }
-        //  }
+        allForm.reset();
         
-        // formAdress.value = [35.6894 + "  " + 139.692]
+        // нужно вернуть метку в исходное состояние
+        let newMarker;
+        map.on("click", newMap)
+        debugger
+        function newMap(){
+          if (map.hasLayer(markerM)){
+            map.removeLayer(markerM);
+         }
+        newMarker = new L.Marker([35.6894,  139.692]);
+        newMarker.addTo(mymap);            
+        }
+
+         window.addEventListener("click", templateClock) 
+         window.addEventListener("keydown", templateKey)
+         function templateClock (event) {
+            if (event.target.className === "successs"){
+              elem.style.display = "none"
+            }
+         }
+         function templateKey (ev){      
+            if (ev.keyCode == 27){
+              elem.style.display = "none"
+            }
+         }
         
-        // } 
-        // else  {
+        formAdress.value = [35.6894 + "  " + 139.692]
+        
+        } else  {
           let elem = document.createElement("div");
           let clone = err.content.cloneNode(true)
           elem.append(clone);  
@@ -89,27 +98,21 @@ export function allFunction(){
 
           window.addEventListener("click", templateClock) 
           window.addEventListener("keydown", templateKey)
-          errBtn.addEventListener("click", templateBtn)
-
+          
           function templateClock (event) {
              if (event.target.className === "error"){
                elem.style.display = "none"
+             } else if(event.target.className === "error__button"){
+              elem.style.display = "none"
              }
           }
           function templateKey (ev){
-            debugger
+            
             if (ev.keyCode == 27){
               elem.style.display = "none"
             }
           }
-         
-          function templateBtn(e){
-            debugger
-            if (e.target.className === "error"){
-              elem.style.display = "none"
-            }
-          }
-         
+        }
        }
        status(responce)
 

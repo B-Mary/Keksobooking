@@ -56,7 +56,6 @@ export function mapFun (all){
   }
 
   
-  
   function createPopup (offerObj){
    
    let locX =  offerObj.location.lat
