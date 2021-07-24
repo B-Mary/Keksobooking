@@ -1,5 +1,5 @@
 
- import {mapFun, displeyBlock} from "./map.js"
+ import { displeyBlock, redMarker,createBlueMarkers} from "./map.js"
  import {cloneCard} from "./card.js"
 
  const allForm = document.querySelector(".ad-form");
@@ -11,18 +11,17 @@
  const formAdress = document.getElementById("address")
 
  const main = document.querySelector(".mainm")
- 
- 
+ const EscapeKey = "27"
+ const LAT = 35.685257;
+ const LNG = 139.75146;  
 
 export function allFunction(){
 
   mapBlock.addEventListener("click", functGet, {once: true});
 
-  
-
   function functGet (){
     async function getDate(){
-   
+
       let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
       {
         method: 'GET',
@@ -34,16 +33,13 @@ export function allFunction(){
       
       getDate().then(function(resp){
         console.log(resp);
-        
-        mapFun(resp)
-        
+        createBlueMarkers(resp)
          })
   }
   
   allForm.addEventListener("submit", sendData);
- 
-  
- async function sendData(e){
+
+  async function sendData(e){
     e.preventDefault();
 
      const formData  = new FormData(allForm); 
@@ -53,66 +49,74 @@ export function allFunction(){
       body:formData
     });
     
-     function  status(response){
-        if(response = "ok"){
-          let elem = document.createElement("div");
-          let clone = success.content.cloneNode(true)
-          elem.append(clone);  
-         
-          main.append(elem)
+    function  status(response){
+      if(response = "ok"){
+        let elem = document.createElement("div");
+        let clone = success.content.cloneNode(true)
+        elem.append(clone);  
+        main.append(elem)
 
         allForm.reset();
+        const markerRed = document.querySelector(".leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive.leaflet-marker-draggable")
+        markerRed.remove;
+        debugger
+        redMarker(LAT, LNG)
 
-         window.addEventListener("click", templateClick) 
-         window.addEventListener("keydown", templateKey)
-         function templateClick (event) {
-            if (event.target.className === "successs"){
-              elem.style.display = "none"
-              location.reload();
-            }
-         }
-         function templateKey (ev){      
-            if (ev.keyCode == 27){
-              elem.style.display = "none"
-              location.reload();
-            }
-         }
-        
-        formAdress.value = [35.6894 + "  " + 139.692]
-        
-        } else  {
-          let elem = document.createElement("div");
-          let clone = err.content.cloneNode(true)
-          elem.append(clone);  
-          main.append(elem)
+        window.addEventListener("click", templateClick) 
+        window.addEventListener("keydown", templateKey)
 
-          window.addEventListener("click", templateClock) 
-          window.addEventListener("keydown", templateKey)
-          
-          function templateClock (event) {
-             if (event.target.className === "error"){
-               elem.style.display = "none"
-             } else if(event.target.className === "error__button"){
-              elem.style.display = "none"
-             }
-          }
-          function templateKey (ev){
-            
-            if (ev.keyCode == 27){
-              elem.style.display = "none"
-            }
+        function templateClick (event) {
+          if (event.target.className === "successs"){
+            elem.style.display = "none"
+            location.reload();
           }
         }
-       }
-       status(responce)
+
+        function templateKey (ev){      
+          if (ev.keyCode == EscapeKey){
+            elem.style.display = "none"
+            location.reload();
+          }
+        }
+        
+        formAdress.value = [LAT + "  " + LNG]  
+        } else  {
+        let elem = document.createElement("div");
+        let clone = err.content.cloneNode(true)
+        elem.append(clone);  
+        main.append(elem)
+
+        window.addEventListener("click", templateClock) 
+        window.addEventListener("keydown", templateKey)
+          
+        function templateClock (event) {
+          if (event.target.className === "error"){
+            elem.style.display = "none"
+          } else if(event.target.className === "error__button"){
+            elem.style.display = "none"
+          }
+        }
+
+        function templateKey (ev){
+          if (ev.keyCode == EscapeKey){
+            elem.style.display = "none"
+          }
+        }
+
+      }
+
+    }
+    status(responce)
 
   }
   
-
-    resetBtn.addEventListener("click", ()=>{
-      allForm.reset()
-    })
+  resetBtn.addEventListener("click", ()=>{
+    allForm.reset()
+  })
  
- }
+}
 
 allFunction()
+
+
+  

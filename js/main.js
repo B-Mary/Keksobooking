@@ -5,7 +5,7 @@
 
 import {homePrice, inTime, outTime} from "./form.js"
 
- import {mapFun, displeyBlock} from "./map.js"
+ import { displeyBlock,  redMarker} from "./map.js"
 
 
  import { allValid } from "./valid.js";

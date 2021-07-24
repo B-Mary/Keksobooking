@@ -34,9 +34,9 @@ export function allValid () {
 
     price.addEventListener("change", typePrice) ;function typePrice (){
      
-       let home = typeHome.value;
+      let home = typeHome.value;
       
-       let coc = priceHome.value  ;
+      let coc = priceHome.value  ;
       switch (home){
         case "bungalow":
           if (coc < 0 || coc > 1000000  ) {
@@ -71,8 +71,8 @@ export function allValid () {
           }  
           break; 
       }
-       priceHome.setAttribute("value", coc)
-       priceHome.min =coc;
+      priceHome.setAttribute("value", coc)
+      priceHome.min =coc;
     } ; 
 
     roomNumber.addEventListener("change", function (evt){
