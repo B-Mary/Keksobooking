@@ -62,29 +62,19 @@ export function allFunction(){
           main.append(elem)
 
         allForm.reset();
-        
-        // нужно вернуть метку в исходное состояние
-        let newMarker;
-        map.on("click", newMap)
-        debugger
-        function newMap(){
-          if (map.hasLayer(markerM)){
-            map.removeLayer(markerM);
-         }
-        newMarker = new L.Marker([35.6894,  139.692]);
-        newMarker.addTo(mymap);            
-        }
 
-         window.addEventListener("click", templateClock) 
+         window.addEventListener("click", templateClick) 
          window.addEventListener("keydown", templateKey)
-         function templateClock (event) {
+         function templateClick (event) {
             if (event.target.className === "successs"){
               elem.style.display = "none"
+              location.reload();
             }
          }
          function templateKey (ev){      
             if (ev.keyCode == 27){
               elem.style.display = "none"
+              location.reload();
             }
          }
         
