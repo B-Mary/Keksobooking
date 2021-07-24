@@ -1,5 +1,5 @@
 
- import { displeyBlock, redMarker,createBlueMarkers} from "./map.js"
+ import { displeyBlock, redMarker, createBlueMarkers} from "./map.js"
  import {cloneCard} from "./card.js"
 
  const allForm = document.querySelector(".ad-form");
@@ -57,9 +57,10 @@ export function allFunction(){
         main.append(elem)
 
         allForm.reset();
+        
         const markerRed = document.querySelector(".leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive.leaflet-marker-draggable")
-        markerRed.remove;
-        debugger
+        markerRed.remove();
+        
         redMarker(LAT, LNG)
 
         window.addEventListener("click", templateClick) 
@@ -73,7 +74,7 @@ export function allFunction(){
         }
 
         function templateKey (ev){      
-          if (ev.keyCode == EscapeKey){
+          if (ev.keyCode == "27"){
             elem.style.display = "none"
             location.reload();
           }
@@ -98,7 +99,7 @@ export function allFunction(){
         }
 
         function templateKey (ev){
-          if (ev.keyCode == EscapeKey){
+          if (ev.keyCode == "27"){
             elem.style.display = "none"
           }
         }

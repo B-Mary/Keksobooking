@@ -15,8 +15,9 @@ const mapOptions = {
 const map = new L.map("map-canvas", mapOptions);
 const layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");   
 map.addLayer(layer);
-
+debugger
 export function redMarker(lat, lng){
+ 
   const markerMain = {
     iconUrl: "../img/main-pin.svg",
     iconSize: [40, 40],
@@ -33,7 +34,7 @@ export function redMarker(lat, lng){
   const markerM = L.marker([lat, lng], markerOptions);
 
   markerM.addTo(map)
-  formAdress.value = [lat + "  " + lng]
+  formAdress.value = [lat + "  " +  lng]
 
   formAdress.setAttribute("readonly", "readonly")
        
