@@ -8,6 +8,8 @@ const LNG = 139.75146;
 const mapZoom = 10
 
 
+
+
 const mapOptions = {
   center: [LAT, LNG],
   zoom: mapZoom
@@ -15,12 +17,13 @@ const mapOptions = {
 const map = new L.map("map-canvas", mapOptions);
 const layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");   
 map.addLayer(layer);
-debugger
+// map.style.visibility = "hidden";
+
 export function redMarker(lat, lng){
  
   const markerMain = {
     iconUrl: "../img/main-pin.svg",
-    iconSize: [40, 40],
+    iconSize: [50, 50],
     }
   const customIcon = L.icon(markerMain);
   

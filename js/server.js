@@ -9,17 +9,20 @@
  const errBtn = document.querySelector(".error__button")
  const mapBlock = document.getElementById("map-canvas");
  const formAdress = document.getElementById("address")
+ 
 
  const main = document.querySelector(".mainm")
  const EscapeKey = "27"
- const LAT = 35.685257;
- const LNG = 139.75146;  
+ const LAT =  35.68813;
+ const LNG = 139.75836;  
+
 
 export function allFunction(){
 
   mapBlock.addEventListener("click", functGet, {once: true});
 
   function functGet (){
+    
     async function getDate(){
 
       let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
@@ -34,6 +37,7 @@ export function allFunction(){
       getDate().then(function(resp){
         console.log(resp);
         createBlueMarkers(resp)
+        redMarker(LAT, LNG)
          })
   }
   
@@ -60,23 +64,22 @@ export function allFunction(){
         
         const markerRed = document.querySelector(".leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive.leaflet-marker-draggable")
         markerRed.remove();
-        
-        redMarker(LAT, LNG)
-
+ 
         window.addEventListener("click", templateClick) 
         window.addEventListener("keydown", templateKey)
 
         function templateClick (event) {
+          debugger
           if (event.target.className === "successs"){
             elem.style.display = "none"
-            location.reload();
+            document.location.reload();
           }
         }
 
         function templateKey (ev){      
-          if (ev.keyCode == "27"){
+          if (ev.keyCode == 27){
             elem.style.display = "none"
-            location.reload();
+            document.location.reload();
           }
         }
         
@@ -99,7 +102,7 @@ export function allFunction(){
         }
 
         function templateKey (ev){
-          if (ev.keyCode == "27"){
+          if (ev.keyCode == 27){
             elem.style.display = "none"
           }
         }
