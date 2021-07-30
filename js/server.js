@@ -25,7 +25,7 @@ export function allFunction(){
     
     async function getDate(){
 
-      let responseGet = await fetch("https://22.javascript.pages.academy/keksobooking/data",
+      let responseGet = await fetch("https://23.javascript.pages.academy/keksobooking/data",
       {
         method: 'GET',
         credentials: 'same-origin',
@@ -36,8 +36,9 @@ export function allFunction(){
       
       getDate().then(function(resp){
         console.log(resp);
-        createBlueMarkers(resp)
         redMarker(LAT, LNG)
+        createBlueMarkers(resp)
+
          })
   }
   

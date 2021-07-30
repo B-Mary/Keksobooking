@@ -8,6 +8,7 @@ let first = house[0];
 // console.log(house);
 
 export function cloneCard(offerDate){ 
+   
   const card = document.querySelector('#card')
   .content
   .querySelector('.popup');
@@ -62,24 +63,41 @@ export function cloneCard(offerDate){
  popTime.innerText = timeAll
 
 
+
  let popFeatures = clonedCard.querySelector(".popup__features");
- let newFeatures = offerDate['offer'].features.map(feature => 
-  {
-   return `<li class = "popup__feature popup__feature--${feature}">`
-  })
- popFeatures.innerHTML = newFeatures
+ 
+
+ function featuresChecked(feature){
+   if (feature.length > 0){
+    let newFeatures = offerDate['offer'].features.map(feature => {
+      return `<li class = "popup__feature popup__feature--${feature}">`
+      popFeatures.innerHTML = newFeatures
+    })
+   } else {
+
+   }
+ }
+
 
  let popDescription = clonedCard.querySelector(".popup__description");
  let newDescription = offerDate['offer'].description;
   popDescription.innerText = newDescription;
 
+
+
  let popPhotos = clonedCard.querySelector(".popup__photos");
-  let newPhotos = offerDate['offer'].photos.map(photo => {
-    return`<img src='${photo}' width="45" height="40" >`
-     }).join(''); 
- 
-  popPhotos.innerHTML  = newPhotos
-    
+  function popPhotosChecked(photo){
+    if (feature.length > 0 ){
+      let newPhotos = offerDate['offer'].photos.map(photo => {
+        return`<img src='${photo}' width="45" height="40" >`
+         }).join(''); 
+     
+      popPhotos.innerHTML  = newPhotos    
+    } else {
+
+    }
+  }
+  
  
  let popAvatar = clonedCard.querySelector(".popup__avatar");
  let srcAvatar = offerDate['author'].avatar;

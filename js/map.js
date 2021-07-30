@@ -17,7 +17,7 @@ const mapOptions = {
 const map = new L.map("map-canvas", mapOptions);
 const layer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");   
 map.addLayer(layer);
-// map.style.visibility = "hidden";
+
 
 export function redMarker(lat, lng){
  
@@ -68,7 +68,8 @@ const markerOptionsN ={
   icon: customIconNormal
 }
 
-function createPopup (offerObj){  
+function createPopup (offerObj){
+  
   let locX =  offerObj.location.lat
   let locY =  offerObj.location.lng
   const markerN = L.marker([locX , locY], markerOptionsN);
