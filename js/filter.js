@@ -3,38 +3,38 @@ import { allFunction } from "./server.js";
 import { createBlueMarkers} from "./map.js"
 
 const filterBlock = document.querySelector(".map__filters");
+const filterTypeHome = document.getElementById("housing-type")
 const mapBlock = document.getElementById("map-canvas");
 const house = document.getElementById("housing-type")
 const housePrice = document.getElementById("housing-price")
 
 
+filterBlock.style.display = "none";
 
 mapBlock.addEventListener("click", blockFilterActive)
-
-filterBlock.style.display = "none";
 
 export function blockFilterActive(){
   filterBlock.style.display = "";
 }
 
-filterBlock.addEventListener("change", filtersChange)
+filterTypeHome.addEventListener("change", filtersChange)
 
-function filtersChange(event){
-//  установить ограничение на отображения 10 пинов 
-
-
-//  это получение значения 
+export function filtersChange(event){
+  debugger
   const filterValue = event.target.value
-  // нужно удалять все маркеры
+  switch (filterValue){
+    case "bungalow":
+      let bungalowFilter = createBlueMarkers.filter(el=> el.typeHouse === filterValue)
+      break;
+    case "flat":
+      let flatFilter = createBlueMarkers.filter(el=> el.typeHouse === filterValue)
+      break;
+    case "house":
+      let houseFilter = createBlueMarkers.filter(el=> el.typeHouse === filterValue)
+      break;
+    case "palace":
+      let placeFilter = createBlueMarkers.filter(el=> el.typeHouse === filterValue)     
+      break; 
+  }
 
-
-  // нужно при изменение соотв option вырисовывать новые пины
-
-  //  у нас несколько фильтров, мы должны ждать пока изменяться все или после каждого фильтра удалять все- отриовывать нужное?
-
-  // брать масив значений всего блока(всех фильтров или каждого фильтра отдельно?)
-
-  let resultFilter = тут должен быть масив.filter(function(item){
-    item.value()
-  }) 
 }

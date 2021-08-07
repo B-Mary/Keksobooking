@@ -51,7 +51,8 @@ export function redMarker(lat, lng){
 
 
 export function createBlueMarkers(all){
-  all.forEach(el => createPopup(el))
+   let tenBlueMarkers = all.slice(0,10)
+   tenBlueMarkers.forEach(el => createPopup(el))
 }
 
 const markerNormal ={
