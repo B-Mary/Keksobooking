@@ -41,30 +41,30 @@ filterBlock.addEventListener("change", filtersChange )
   // }
 
 
-//  function filtersChange(event, data){
-// // event это ловит выбраное значение option из HTML, а data это должен быть заходязий массив пинов! но млин....это так не работает, не могу совместить эти две крайности
-//   const filterValue = event.target.value
-//  debugger
-//   switch (filterValue){
-//     case "bungalow":
-//         let bungalowFilter = data.filter(el=> el.housingType === filterValue)
-//         createBlueMarkers(bungalowFilter)
-//         break;
-//     case "flat":
-//         let flatFilter = data.filter(el=> el.housingType === filterValue)
-//         createBlueMarkers(flatFilter)
-//         break;
-//     case "house":
-//         let houseFilter = data.filter(el=> el.housingType === filterValue)
-//         createBlueMarkers(houseFilter)
-//         break;
-//     case "palace":
-//         let placeFilter = data.filter(el=> el.housingType === filterValue) 
-//         createBlueMarkers(placeFilter)
-//         break; 
-//   }
+ export function filtersChange(event, data){
+// event это ловит выбраное значение option из HTML, а data это должен быть заходязий массив пинов! но млин....это так не работает, не могу совместить эти две крайности
+  const filterValue = event.target.value
+ debugger
+  switch (filterValue){
+    case "bungalow":
+        let bungalowFilter = data.filter(el=> el.housingType === filterValue)
+        createBlueMarkers(bungalowFilter)
+        break;
+    case "flat":
+        let flatFilter = data.filter(el=> el.housingType === filterValue)
+        createBlueMarkers(flatFilter)
+        break;
+    case "house":
+        let houseFilter = data.filter(el=> el.housingType === filterValue)
+        createBlueMarkers(houseFilter)
+        break;
+    case "palace":
+        let placeFilter = data.filter(el=> el.housingType === filterValue) 
+        createBlueMarkers(placeFilter)
+        break; 
+  }
   
-// }
+}
   
 
 
