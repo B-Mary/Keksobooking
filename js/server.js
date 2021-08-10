@@ -1,7 +1,7 @@
 
  import { displeyBlock, redMarker, createBlueMarkers} from "./map.js"
  import {cloneCard} from "./card.js"
- import { filtersChange } from "./filter.js";
+  // import { filtersChange } from "./filter.js";
 
  const allForm = document.querySelector(".ad-form");
  const success = document.getElementById("success")
@@ -38,7 +38,7 @@ export function allFunction(){
       getDate().then(function(resp){
         console.log(resp);
         redMarker(LAT, LNG)
-        filtersChange(resp)
+       
         createBlueMarkers(resp)
         
          })
