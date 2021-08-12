@@ -1,7 +1,7 @@
 
  import { displeyBlock, redMarker, createBlueMarkers} from "./map.js"
  import {cloneCard} from "./card.js"
-  import { filtersChange } from "./filter.js";
+
 
  const allForm = document.querySelector(".ad-form");
  const success = document.getElementById("success")
@@ -10,6 +10,8 @@
  const errBtn = document.querySelector(".error__button")
  const mapBlock = document.getElementById("map-canvas");
  const formAdress = document.getElementById("address")
+
+ const mapFilters = document.querySelector(".map__filters")
  
 
  const main = document.querySelector(".mainm")
@@ -38,12 +40,55 @@ export function allFunction(){
       getDate().then(function(resp){
         console.log(resp);
         redMarker(LAT, LNG)
-        filtersChange(resp)
-        createBlueMarkers(resp)
+      
+        // createBlueMarkers(resp)
+
+        mapFilters.addEventListener("change", filter)
         
+        function filter(event){
+          
+          let filterValue = event.target.value
+          const houseType = document.getElementById("housing-type")
+          const housePrice = document.getElementById("housing-price")
+          let houseTypeValue = houseType.value
+          let housePriceValue = housePrice.value
+         
+          function housingTypeHandler(elem){
+           if(houseTypeValue === "palace"){
+            return elem.offer.type === "palace"
+           }
+           if(houseTypeValue === "flat"){
+            return elem.offer.type === "flat"
+           }
+           if(houseTypeValue === "house"){
+            return elem.offer.type === "house"
+           }
+           if(houseTypeValue === "bungalow"){
+            return elem.offer.type === "bungalow"
+           }
+          }
+
+          function housingPriceHandler(elem){
+            
+           if (housePriceValue === "low"){             
+             return  elem.offer.price < 10000             
+           }
+           if (housePriceValue === "middle"){                   
+             return elem.offer.price >= 10000 && elem.offer.price <= 50000             
+           }
+           if (housePriceValue === "high"){ 
+             return elem.offer.price > 50000             
+           }
+          }
+         let commonFilter = function (elem) {
+          return housingTypeHandler(elem) && housingPriceHandler(elem) 
+         }
+          const filteredOffers = resp.filter(commonFilter)
+          createBlueMarkers (filteredOffers)
+        }
          })
   }
-  
+
   allForm.addEventListener("submit", sendData);
 
   async function sendData(e){

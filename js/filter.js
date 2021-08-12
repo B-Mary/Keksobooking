@@ -17,7 +17,6 @@ export function blockFilterActive(){
   filterBlock.style.display = "";
 }
 
-filterBlock.addEventListener("change", filtersChange )
 
 
   // let typeOfHousingFilter = function (elem) {
@@ -26,8 +25,6 @@ filterBlock.addEventListener("change", filtersChange )
   //   }
   //   return elem.offer.type === housingType.value;
   // };
-
-
 
 
 // тут логика понятно, это чисто отработка фильтра..но у нас же должно срабатывать при выборе("change" , function) какого-либо значения в фильтре на странице
@@ -39,34 +36,6 @@ filterBlock.addEventListener("change", filtersChange )
   //   }
   //   createBlueMarkers(filteredData)
   // }
-
-
- export function filtersChange(event, data){
-// event это ловит выбраное значение option из HTML, а data это должен быть заходязий массив пинов! но млин....это так не работает, не могу совместить эти две крайности
-  const filterValue = event.target.value
- debugger
-  switch (filterValue){
-    case "bungalow":
-        let bungalowFilter = data.filter(el=> el.housingType === filterValue)
-        createBlueMarkers(bungalowFilter)
-        break;
-    case "flat":
-        let flatFilter = data.filter(el=> el.housingType === filterValue)
-        createBlueMarkers(flatFilter)
-        break;
-    case "house":
-        let houseFilter = data.filter(el=> el.housingType === filterValue)
-        createBlueMarkers(houseFilter)
-        break;
-    case "palace":
-        let placeFilter = data.filter(el=> el.housingType === filterValue) 
-        createBlueMarkers(placeFilter)
-        break; 
-  }
-  
-}
-  
-
 
 // PRICE FILTER
 
@@ -89,7 +58,4 @@ filterBlock.addEventListener("change", filtersChange )
     //   return priceValue;
     // };
 
-    //  let commonFilter = function (elem) {
-  //     return typeOfHousingFilter(elem) && priceOfHousingfilter(elem) 
-  //   };
-  // const filteredData =data.filter(el => el.houseType === houseType() && priceOfHousingfilter  )
+ 
