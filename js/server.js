@@ -50,8 +50,14 @@ export function allFunction(){
           let filterValue = event.target.value
           const houseType = document.getElementById("housing-type")
           const housePrice = document.getElementById("housing-price")
+          const houseRooms = document.getElementById("housing-rooms")
+          const houseGuests = document.getElementById("housing-guests")
+          const houseFeatures = document.getElementById("housing-features")
           let houseTypeValue = houseType.value
           let housePriceValue = housePrice.value
+          let houseRoomsValue = houseRooms.value
+          let houseGuestsValue = houseGuests.value
+          let houseFeaturesValue = houseFeatures.value
          
           function housingTypeHandler(elem){
            if(houseTypeValue === "palace"){
@@ -66,6 +72,9 @@ export function allFunction(){
            if(houseTypeValue === "bungalow"){
             return elem.offer.type === "bungalow"
            }
+           if (houseTypeValue === "any"){
+             return elem.offer.type === "bungalow" && elem.offer.type === "house" && elem.offer.type === "flat" && elem.offer.type === "palace"
+           }
           }
 
           function housingPriceHandler(elem){
@@ -79,15 +88,77 @@ export function allFunction(){
            if (housePriceValue === "high"){ 
              return elem.offer.price > 50000             
            }
+           if (housePriceValue === "any"){
+            return elem.offer.price >= 0 && elem.offer.price <= 100000
+           }
           }
+
+          
+          function housingRoomHandler(elem){
+            
+            if (houseRoomsValue === "1"){             
+              return  elem.offer.rooms === "1"             
+            }
+            if (houseRoomsValue === "2"){                   
+              return elem.offer.rooms === "2" 
+            }
+            if (houseRoomsValue === "3"){ 
+              return elem.offer.rooms === "3"            
+            }
+            if (houseRoomsValue === "any"){
+              return elem.offer.rooms >= 0 && elem.offer.rooms <= 10
+            }
+           }
+
+           function housingGuestsHandler(elem){
+            
+            if (houseGuestsValue === "1"){             
+              return  elem.offer.guests === "1"             
+            }
+            if (houseGuestsValue === "2"){                   
+              return elem.offer.guests === "2" 
+            }
+            if (houseGuestsValue === "0"){ 
+              return elem.offer.guests === "0"            
+            }
+            if (houseGuestsValue === "any"){
+              return elem.offer.guests >= 0 && elem.offer.guests <= 10
+            }
+           }
+
+           function housingFeaturesHandler(elem){
+             debugger
+            if (houseFeaturesValue === "wifi"){             
+              return  elem.offer.features === "wifi"             
+            }
+            if (houseFeaturesValue === "dishwasher"){                   
+              return elem.offer.features === "dishwasher" 
+            }
+            if (houseFeaturesValue === "parking"){ 
+              return elem.offer.features === "parking"            
+            }
+            if (houseFeaturesValue === "washer"){
+              return elem.offer.features === "washer"
+            }
+            if (houseFeaturesValue === "elevator"){ 
+             return elem.offer.features === "elevatorg"            
+            }
+            if (houseFeaturesValue === "conditioner"){
+             return elem.offer.features === "conditioner"
+            }
+           }
+
+
          let commonFilter = function (elem) {
-          return housingTypeHandler(elem) && housingPriceHandler(elem) 
+          return housingTypeHandler && housingPriceHandler(elem) && housingRoomHandler(elem) && housingGuestsHandler(elem) && housingFeaturesHandler(elem)
          }
           const filteredOffers = resp.filter(commonFilter)
           createBlueMarkers (filteredOffers)
         }
          })
   }
+
+
 
   allForm.addEventListener("submit", sendData);
 
