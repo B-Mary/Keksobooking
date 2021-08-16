@@ -8,8 +8,6 @@ const LNG = 139.75146;
 const mapZoom = 10
 
 
-
-
 const mapOptions = {
   center: [LAT, LNG],
   zoom: mapZoom
@@ -49,7 +47,6 @@ export function redMarker(lat, lng){
 }
 
 
-
 export function createBlueMarkers(all){
    let tenBlueMarkers = all.slice(0,10)
    tenBlueMarkers.forEach(el => createPopup(el))
@@ -73,8 +70,12 @@ function createPopup (offerObj){
   
   let locX =  offerObj.location.lat
   let locY =  offerObj.location.lng
-  const markerN = L.marker([locX , locY], markerOptionsN);
+  const markerN = L.marker([locX , locY], markerOptionsN)
+  
   markerN.addTo(map).bindPopup(cloneCard(offerObj));
+ 
+  
+  
 }
 
 

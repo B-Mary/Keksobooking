@@ -41,25 +41,30 @@ export function allFunction(){
         console.log(resp);
         redMarker(LAT, LNG)
       
-        // createBlueMarkers(resp)
+        
 
         mapFilters.addEventListener("change", filter)
-        
+
         function filter(event){
+          debugger
+          let  filteredOffers =[]
+          let bluePin = document.querySelectorAll('[title*="My another Location"]')
+          bluePin.forEach(el => el.remove())
+
           
-          let filterValue = event.target.value
           const houseType = document.getElementById("housing-type")
           const housePrice = document.getElementById("housing-price")
           const houseRooms = document.getElementById("housing-rooms")
           const houseGuests = document.getElementById("housing-guests")
-          const houseFeatures = document.getElementById("housing-features")
+          
           let houseTypeValue = houseType.value
           let housePriceValue = housePrice.value
           let houseRoomsValue = houseRooms.value
           let houseGuestsValue = houseGuests.value
-          let houseFeaturesValue = houseFeatures.value
+         
          
           function housingTypeHandler(elem){
+            
            if(houseTypeValue === "palace"){
             return elem.offer.type === "palace"
            }
@@ -73,7 +78,7 @@ export function allFunction(){
             return elem.offer.type === "bungalow"
            }
            if (houseTypeValue === "any"){
-             return elem.offer.type === "bungalow" && elem.offer.type === "house" && elem.offer.type === "flat" && elem.offer.type === "palace"
+             return true
            }
           }
 
@@ -89,7 +94,7 @@ export function allFunction(){
              return elem.offer.price > 50000             
            }
            if (housePriceValue === "any"){
-            return elem.offer.price >= 0 && elem.offer.price <= 100000
+            return true
            }
           }
 
@@ -106,7 +111,7 @@ export function allFunction(){
               return elem.offer.rooms === "3"            
             }
             if (houseRoomsValue === "any"){
-              return elem.offer.rooms >= 0 && elem.offer.rooms <= 10
+              return true
             }
            }
 
@@ -122,42 +127,34 @@ export function allFunction(){
               return elem.offer.guests === "0"            
             }
             if (houseGuestsValue === "any"){
-              return elem.offer.guests >= 0 && elem.offer.guests <= 10
+              return true
             }
            }
 
-           function housingFeaturesHandler(elem){
-             debugger
-            if (houseFeaturesValue === "wifi"){             
-              return  elem.offer.features === "wifi"             
-            }
-            if (houseFeaturesValue === "dishwasher"){                   
-              return elem.offer.features === "dishwasher" 
-            }
-            if (houseFeaturesValue === "parking"){ 
-              return elem.offer.features === "parking"            
-            }
-            if (houseFeaturesValue === "washer"){
-              return elem.offer.features === "washer"
-            }
-            if (houseFeaturesValue === "elevator"){ 
-             return elem.offer.features === "elevatorg"            
-            }
-            if (houseFeaturesValue === "conditioner"){
-             return elem.offer.features === "conditioner"
-            }
-           }
+           let featuresFilter = function (elem) {
+           
+              const filterFeaturesCheckboxes = document.querySelectorAll('.map__features input[type=checkbox]:checked');
+              let filtered = true;
+              if (filterFeaturesCheckboxes.length && elem.offer.features) {
+                  filterFeaturesCheckboxes.forEach(function (chBox) {
+                   if (!elem.offer.features.includes(chBox.value) ) {
+                     filtered = false;
+                    }
+                });
+              }
+               return filtered;
+           };
 
+          
 
          let commonFilter = function (elem) {
-          return housingTypeHandler && housingPriceHandler(elem) && housingRoomHandler(elem) && housingGuestsHandler(elem) && housingFeaturesHandler(elem)
+          return housingTypeHandler(elem) && housingPriceHandler(elem) && housingRoomHandler(elem) && housingGuestsHandler(elem) && featuresFilter(elem)
          }
-          const filteredOffers = resp.filter(commonFilter)
+           filteredOffers = resp.filter(commonFilter)
           createBlueMarkers (filteredOffers)
-        }
-         })
+      }
+    })
   }
-
 
 
   allForm.addEventListener("submit", sendData);
