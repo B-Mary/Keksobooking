@@ -71,11 +71,7 @@ function createPopup (offerObj){
   let locX =  offerObj.location.lat
   let locY =  offerObj.location.lng
   const markerN = L.marker([locX , locY], markerOptionsN)
-  
   markerN.addTo(map).bindPopup(cloneCard(offerObj));
- 
-  
-  
 }
 
 
