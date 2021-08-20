@@ -4,7 +4,13 @@ let form = document.querySelector(".ad-form__element");
 let typeHome = document.getElementById("type");
 let formPrice = document.getElementById("price");
 
+let avatarPreview = document.querySelector(".ad-form-header__preview")
 
+let avatarLoadInput = document.getElementById("avatar")
+
+
+let photoHousePreview = document.querySelector(".ad-form__photo")
+let photoHaouseInput = document.getElementById("images")
 
 typeHome.addEventListener("change", homePrice )
 
@@ -77,5 +83,66 @@ export function outTime(e){
 } 
 
 
- 
+ avatarLoadInput.addEventListener("change", loadImg)
 
+ function loadImg(){
+  
+   while(avatarPreview.firstChild) {
+    avatarPreview.removeChild(avatarPreview.firstChild);
+   }
+    if(avatarLoadInput.files.length === 0){
+      return;
+    } 
+     
+    let f = avatarLoadInput.files[0],     
+    fr = new FileReader();
+
+    if(f.type.indexOf("image") === -1){
+      return;
+    }
+
+    fr.addEventListener("load", previewImage)
+
+    function previewImage(e){
+      const image = document.createElement('img');
+      image.width = "60"
+      image.height = "70"
+      avatarPreview.id = "nopadding"
+      image.src = e.target.result;
+      avatarPreview.append(image)
+      
+    }
+    fr.readAsDataURL(f);
+  
+ }
+
+
+ photoHaouseInput.addEventListener("change", loadHouseImg)
+
+ function loadHouseImg(){
+  while(photoHousePreview.firstChild) {
+    photoHousePreview.removeChild(photoHousePreview.firstChild);
+   }
+   if(photoHaouseInput.files.length === 0){
+    return;
+  } 
+   
+  let ff = photoHaouseInput.files[0],     
+  frr = new FileReader();
+
+  if(ff.type.indexOf("image") === -1){
+    return;
+  }
+
+  frr.addEventListener("load", previewHouseImage)
+
+  function previewHouseImage(e){
+    const image = document.createElement('img');
+    image.width = "70"
+    image.height = "70"
+    image.src = e.target.result;
+    photoHousePreview.append(image)
+    
+  }
+  frr.readAsDataURL(ff);
+ }

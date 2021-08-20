@@ -3,7 +3,7 @@
  import {cloneCard} from "./card.js"
  import { filter } from "./filter.js";
 
-
+ const mapFilters = document.querySelector('.map__filters')
  const allForm = document.querySelector(".ad-form");
  const success = document.getElementById("success")
  const err = document.getElementById("error")
@@ -43,7 +43,9 @@ export function allFunction(){
         redMarker(LAT, LNG)
       
         createBlueMarkers (resp)
-        filter(resp)
+        mapFilters.addEventListener("change",(evt)=> {
+          filter(evt,resp)
+        })
       })
   }
 

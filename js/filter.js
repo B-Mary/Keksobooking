@@ -124,7 +124,7 @@ export function filter(event, resp){
  let commonFilter = function (elem) {
   return housingTypeHandler(elem) && housingPriceHandler(elem) && housingRoomHandler(elem) && housingGuestsHandler(elem) && featuresFilter(elem)
  }
-   filteredOffers = event.filter(commonFilter)
+   filteredOffers = resp.filter(commonFilter)
   createBlueMarkers (filteredOffers)
 }
 

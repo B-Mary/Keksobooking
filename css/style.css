@@ -93,7 +93,9 @@ fieldset {
   height: 500px;
   background-color: #dddddd;
 }
-
+#nopadding{
+  padding: 0 0;
+}
 
 /**
  * Фильтры объявления
