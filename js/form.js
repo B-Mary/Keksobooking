@@ -10,7 +10,7 @@ let avatarLoadInput = document.getElementById("avatar")
 
 
 let photoHousePreview = document.querySelector(".ad-form__photo")
-let photoHaouseInput = document.getElementById("images")
+let photoHouseInput = document.getElementById("images")
 
 typeHome.addEventListener("change", homePrice )
 
@@ -95,7 +95,7 @@ export function outTime(e){
     } 
      
     let f = avatarLoadInput.files[0],     
-    fr = new FileReader();
+     fr = new FileReader();
 
     if(f.type.indexOf("image") === -1){
       return;
@@ -116,33 +116,36 @@ export function outTime(e){
   
  }
 
+ photoHouseInput.addEventListener("change", loadHouseImg)
 
- photoHaouseInput.addEventListener("change", loadHouseImg)
 
- function loadHouseImg(){
+function loadHouseImg(e) {
+
   while(photoHousePreview.firstChild) {
     photoHousePreview.removeChild(photoHousePreview.firstChild);
    }
-   if(photoHaouseInput.files.length === 0){
-    return;
-  } 
-   
-  let ff = photoHaouseInput.files[0],     
-  frr = new FileReader();
+  
+  let files = e.target.files;
+  photoHousePreview.id = "dispflex"
 
-  if(ff.type.indexOf("image") === -1){
-    return;
-  }
+  debugger
+ 
+  let  filesLength = files.length;
+  for (let i = 0; i < filesLength; i++) {
+   let f = files[i]
+   let fileRead = new FileReader();
+  
 
-  frr.addEventListener("load", previewHouseImage)
+   fileRead.addEventListener("load", previewHouseImage)
 
-  function previewHouseImage(e){
-    const image = document.createElement('img');
-    image.width = "70"
-    image.height = "70"
-    image.src = e.target.result;
-    photoHousePreview.append(image)
-    
-  }
-  frr.readAsDataURL(ff);
+    function previewHouseImage(e){
+      debugger
+      let file = e.target ;
+      file.width ="50";
+      file.height = "50";
+      file.visibility = "visible"
+      photoHousePreview.innerHTML += "<img  src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>"
+    }
+    fileRead.readAsDataURL(f) 
  }
+}

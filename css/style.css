@@ -96,6 +96,16 @@ fieldset {
 #nopadding{
   padding: 0 0;
 }
+#dispflex{
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 150px;
+  background-color: transparent;
+  border-radius: 5px;
+}
 
 /**
  * Фильтры объявления
